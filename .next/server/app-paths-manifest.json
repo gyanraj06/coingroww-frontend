@@ -1,0 +1,7 @@
+{
+  "/top/[tag]/page": "app/top/[tag]/page.js",
+  "/markets/[tag]/page": "app/markets/[tag]/page.js",
+  "/prediction/page": "app/prediction/page.js",
+  "/page": "app/page.js",
+  "/post/[id]/page": "app/post/[id]/page.js"
+}
