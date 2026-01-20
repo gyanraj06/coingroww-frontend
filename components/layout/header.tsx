@@ -74,7 +74,7 @@ export function Header() {
                 {/* Logo */}
                 <Link href="/" className="flex items-center space-x-2 font-bold text-2xl tracking-tighter z-50">
                     <img src="/logo.png" alt="CoinGroww" className="h-10 w-10" />
-                    <span className="text-yellow-500">COINGROWW</span>
+                    <span className="text-yellow-500 font-poiret font-bold">CoinGroww</span>
                 </Link>
 
                 {/* Desktop Navigation */}

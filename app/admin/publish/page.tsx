@@ -61,7 +61,7 @@ export default function AdminPublish() {
         <div className="max-w-2xl mx-auto space-y-8">
             <div className="space-y-2">
                 <h1 className="text-3xl font-bold text-blue-500">Publish Article</h1>
-                <p className="text-muted-foreground">Create a new post for COINGROWW.</p>
+                <p className="text-muted-foreground">Create a new post for CoinGroww.</p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-6 border border-border rounded-lg p-6 bg-card/50">

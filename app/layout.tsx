@@ -57,7 +57,7 @@ export default function RootLayout({
                                 <div className="space-y-4">
                                     <Link href="/" className="flex items-center space-x-2 font-bold text-2xl tracking-tighter">
                                         <img src="/logo.png" alt="CoinGroww" className="h-6 w-6" />
-                                        <span className="text-yellow-500">COINGROWW</span>
+                                        <span className="text-yellow-500 font-denis">CoinGroww</span>
                                     </Link>
 
                                 </div>
