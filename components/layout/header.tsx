@@ -167,6 +167,9 @@ export function Header() {
                     <Link href="/prediction" className="px-4 py-2 text-sm font-bold uppercase tracking-wider text-gray-300 hover:text-blue-500 transition-colors">
                         Price Prediction
                     </Link>
+                    <Link href="/event" className="px-4 py-2 text-sm font-bold uppercase tracking-wider text-gray-300 hover:text-blue-500 transition-colors">
+                        Event
+                    </Link>
                 </nav>
 
                 {/* Mobile Menu Toggle */}
@@ -214,6 +217,7 @@ export function Header() {
                         <div className="border-t border-[#1f1f1f] pt-6 space-y-4">
                             <Link href="/press-release" className="block text-lg font-bold text-white uppercase">Press Release</Link>
                             <Link href="/prediction" className="block text-lg font-bold text-white uppercase">Price Prediction</Link>
+                            <Link href="/event" className="block text-lg font-bold text-white uppercase">Event</Link>
                         </div>
                     </nav>
                 </div>
