@@ -1,7 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { TrendingUp, Star, ArrowUp, ArrowDown, Activity } from 'lucide-react';
+import { Star, ArrowUp, ArrowDown, Activity } from 'lucide-react';
+import { TrendingWidget } from './trending-widget';
 import { useEffect, useState } from 'react';
 import { Post } from '@/types';
 
@@ -39,7 +40,11 @@ export function Sidebar({ editorsPicks = [], trendingPosts = [] }: SidebarProps)
         const fetchAssets = async () => {
             try {
                 // Fetching 18 items to have 3 pages of 6 items
-                const res = await fetch('https://rest.coincap.io/v2/assets?limit=18');
+                const res = await fetch('https://rest.coincap.io/v3/assets?limit=18', {
+                    headers: {
+                        'Authorization': 'Bearer s'
+                    }
+                });
                 if (!res.ok) throw new Error('Fetch failed');
                 const data = await res.json();
                 setAssets(data.data);
@@ -102,13 +107,17 @@ export function Sidebar({ editorsPicks = [], trendingPosts = [] }: SidebarProps)
                         </div>
                         <h3 className="text-xl font-bold text-white">Crypto Daily</h3>
                     </div>
-                    {/* Page Indicator dots */}
+                    {/* Progress Bar */}
                     <div className="flex gap-1">
                         {Array.from({ length: Math.ceil(assets.length / 6) }).map((_, i) => (
                             <div
                                 key={i}
-                                className={`w-1.5 h-1.5 rounded-full transition-colors ${page === i ? 'bg-blue-500' : 'bg-gray-700'}`}
-                            />
+                                className="h-1 w-4 rounded-full bg-gray-800 overflow-hidden"
+                            >
+                                {page === i && (
+                                    <div className="h-full bg-blue-500 animate-[progress_5s_linear_infinite]" />
+                                )}
+                            </div>
                         ))}
                     </div>
                 </div>
@@ -157,34 +166,8 @@ export function Sidebar({ editorsPicks = [], trendingPosts = [] }: SidebarProps)
                 )}
             </div>
 
-            {/* Trending Now */}
-            <div className="space-y-4">
-                <div className="flex items-center gap-2 border-b border-[#1f1f1f] pb-2">
-                    <TrendingUp className="h-5 w-5 text-blue-500" />
-                    <h3 className="font-bold text-lg text-white">Trending Now</h3>
-                </div>
-                <div className="flex flex-col gap-4">
-                    {trendingPosts.length > 0 ? (
-                        trendingPosts.map((post, index) => (
-                            <Link key={post.id} href={`/post/${post.id}`}>
-                                <div className="flex gap-4 group cursor-pointer">
-                                    <span className="text-2xl font-bold text-gray-800 dark:text-gray-700 group-hover:text-blue-500 transition-colors">
-                                        {String(index + 1).padStart(2, '0')}
-                                    </span>
-                                    <div>
-                                        <span className="text-xs font-bold text-blue-400 uppercase tracking-wider block mb-1">{post.category}</span>
-                                        <h4 className="text-sm font-semibold leading-snug group-hover:text-blue-400 transition-colors line-clamp-2">
-                                            {post.title}
-                                        </h4>
-                                    </div>
-                                </div>
-                            </Link>
-                        ))
-                    ) : (
-                        <div className="text-sm text-gray-500">No trending posts yet.</div>
-                    )}
-                </div>
-            </div>
+            {/* Trending Now - Hidden on mobile because it's shown at the top of page.tsx */}
+            <TrendingWidget trendingPosts={trendingPosts} className="hidden lg:block" />
 
             {/* Editor's Picks */}
             {editorsPicks.length > 0 && (

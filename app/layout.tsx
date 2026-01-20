@@ -51,8 +51,8 @@ export default function RootLayout({
                         </main>
 
                         {/* Footer */}
-                        <footer className="border-t border-border bg-black py-16">
-                            <div className="container grid grid-cols-1 md:grid-cols-4 gap-12">
+                        <footer className="border-t border-border bg-black py-10 md:py-16">
+                            <div className="container px-4 md:px-6 grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
                                 {/* Brand Column */}
                                 <div className="space-y-4">
                                     <Link href="/" className="flex items-center space-x-2 font-bold text-2xl tracking-tighter">
@@ -106,8 +106,8 @@ export default function RootLayout({
                                     </div>
                                 </div>
                             </div>
-                            <div className="container mt-12 border-t border-[#1f1f1f] pt-8 flex flex-col justify-center items-center text-sm text-gray-600">
-                                <div className="flex items-center gap-1">
+                            <div className="container px-4 md:px-6 mt-8 md:mt-12 border-t border-[#1f1f1f] pt-6 md:pt-8 flex flex-col justify-center items-center text-sm text-gray-600">
+                                <div className="flex flex-wrap justify-center items-center gap-1 text-center">
                                     <span>Designed by</span>
                                     <Link href="https://megabytecode.in/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">
                                         Megabytecode under Mounterra Innovations

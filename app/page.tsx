@@ -3,6 +3,7 @@ import { supabase, isSupabaseConfigured } from '@/lib/supabase';
 import { HeroSection } from '@/components/news/hero-section';
 import { Sidebar } from '@/components/news/sidebar';
 import { LatestNews } from '@/components/news/latest-news';
+import { TrendingWidget } from '@/components/news/trending-widget';
 
 export const revalidate = 0;
 export const dynamic = 'force-dynamic';
@@ -52,6 +53,11 @@ export default async function Home() {
             <section>
                 <HeroSection featuredPosts={featured} />
             </section>
+
+            {/* Mobile Only: Trending News (Appears after Hero) */}
+            <div className="lg:hidden">
+                <TrendingWidget trendingPosts={trending} />
+            </div>
 
             {/* 2. Main Layout (Content + Sidebar) */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">

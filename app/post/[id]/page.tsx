@@ -102,13 +102,10 @@ export default async function PostPage({ params }: { params: { id: string } }) {
                 )}
 
                 {/* Article Content */}
-                <div className="prose prose-invert prose-lg max-w-none">
-                    {post.content.split('\n\n').map((paragraph, index) => (
-                        <p key={index} className="text-gray-300 leading-relaxed mb-4">
-                            {paragraph}
-                        </p>
-                    ))}
-                </div>
+                <div
+                    className="prose prose-invert prose-lg max-w-none text-gray-300 [&>p]:mb-4 [&>h1]:text-white [&>h2]:text-white [&>h3]:text-white [&>ul]:list-disc [&>ul]:pl-5 [&>ol]:list-decimal [&>ol]:pl-5 [&>blockquote]:border-l-4 [&>blockquote]:border-blue-500 [&>blockquote]:pl-4 [&>blockquote]:italic"
+                    dangerouslySetInnerHTML={{ __html: post.content }}
+                />
             </article>
 
             {/* Footer */}

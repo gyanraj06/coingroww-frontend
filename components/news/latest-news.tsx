@@ -27,7 +27,7 @@ export function LatestNews({ initialPosts, postsPerPage = 5 }: LatestNewsProps) 
                     visiblePosts.map((post) => (
                         <article key={post.id} className="group grid grid-cols-1 md:grid-cols-12 gap-6 p-4 rounded-lg hover:bg-[#0f0f0f] border border-transparent hover:border-[#1f1f1f] transition-all">
                             {/* Thumbnail */}
-                            <div className="md:col-span-4 h-48 md:h-32 bg-gray-800 rounded-md overflow-hidden relative">
+                            <div className="md:col-span-4 h-40 sm:h-48 md:h-32 bg-gray-800 rounded-md overflow-hidden relative">
                                 {post.image_url ? (
                                     <img src={post.image_url} alt={post.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                                 ) : (

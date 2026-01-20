@@ -61,6 +61,11 @@ const navigation = {
 export function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
     const [hoveredItem, setHoveredItem] = React.useState<string | null>(null);
+    const [expandedCategory, setExpandedCategory] = React.useState<string | null>(null);
+
+    const toggleCategory = (key: string) => {
+        setExpandedCategory(expandedCategory === key ? null : key);
+    };
 
     return (
         <header className="sticky top-0 z-40 w-full border-b border-[#1f1f1f] bg-[#0a0a0a]/90 backdrop-blur-xl">
@@ -177,9 +182,21 @@ export function Header() {
                 <div className="lg:hidden absolute top-16 left-0 w-full h-[calc(100vh-4rem)] bg-background border-t border-[#1f1f1f] overflow-y-auto p-6">
                     <nav className="flex flex-col space-y-6">
                         {Object.entries(navigation).map(([key, category]) => (
-                            <div key={key} className="space-y-4">
-                                <h3 className="text-lg font-bold text-blue-500 uppercase tracking-widest">{category.title}</h3>
-                                <div className="grid grid-cols-2 gap-3">
+                            <div key={key} className="border-b border-[#1f1f1f] pb-4 last:border-0">
+                                <button
+                                    className="flex w-full items-center justify-between py-2 text-lg font-bold text-blue-500 uppercase tracking-widest"
+                                    onClick={() => toggleCategory(key)}
+                                >
+                                    {category.title}
+                                    <ChevronDown className={cn(
+                                        "h-5 w-5 transition-transform duration-300",
+                                        expandedCategory === key ? "rotate-180" : ""
+                                    )} />
+                                </button>
+                                <div className={cn(
+                                    "grid grid-cols-2 gap-3 transition-all duration-300 overflow-hidden",
+                                    expandedCategory === key ? "max-h-[500px] opacity-100 mt-4" : "max-h-0 opacity-0"
+                                )}>
                                     {category.items.map((item) => (
                                         <Link
                                             key={item.name}

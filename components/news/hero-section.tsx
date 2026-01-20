@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Post } from '@/app/page';
+import { Post } from '@/types';
 
 interface HeroSectionProps {
     featuredPosts: Post[];
@@ -41,7 +41,7 @@ export function HeroSection({ featuredPosts }: HeroSectionProps) {
                     <span className="inline-block px-3 py-1 mb-4 text-xs font-bold text-white bg-blue-600 rounded-sm uppercase tracking-wide">
                         {mainFeature.category}
                     </span>
-                    <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-4 group-hover:text-blue-400 transition-colors line-clamp-3">
+                    <h2 className="text-2xl md:text-4xl font-bold text-white leading-tight mb-4 group-hover:text-blue-400 transition-colors line-clamp-3">
                         <Link href={`/post/${mainFeature.id}`}>
                             {mainFeature.title}
                         </Link>
