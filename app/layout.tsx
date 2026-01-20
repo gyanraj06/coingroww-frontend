@@ -59,15 +59,7 @@ export default function RootLayout({
                                         <img src="/logo.png" alt="CoinGroww" className="h-6 w-6" />
                                         <span className="text-yellow-500">COINGROWW</span>
                                     </Link>
-                                    <div className="flex gap-4">
-                                        {/* Social Placeholders */}
-                                        <div className="w-8 h-8 rounded bg-gray-800 flex items-center justify-center hover:bg-blue-600 transition-colors cursor-pointer">
-                                            <span className="text-xs font-bold">X</span>
-                                        </div>
-                                        <div className="w-8 h-8 rounded bg-gray-800 flex items-center justify-center hover:bg-blue-700 transition-colors cursor-pointer">
-                                            <span className="text-xs font-bold">in</span>
-                                        </div>
-                                    </div>
+
                                 </div>
 
                                 {/* Products Column */}
