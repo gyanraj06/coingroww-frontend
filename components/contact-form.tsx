@@ -1,9 +1,11 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Send, User, Mail, MessageSquare, StickyNote, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 export function ContactForm() {
+    const form = useRef<HTMLFormElement>(null);
     const [isLoading, setIsLoading] = useState(false);
     const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
@@ -11,14 +13,36 @@ export function ContactForm() {
         e.preventDefault();
         setIsLoading(true);
 
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 1500));
+        const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+        const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+        const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+        if (!serviceId || !templateId || !publicKey) {
+            console.error('EmailJS environment variables are missing.');
+            setStatus('error');
+            setIsLoading(false);
+            return;
+        }
+
+        if (form.current) {
+            try {
+                await emailjs.sendForm(serviceId, templateId, form.current, {
+                    publicKey: publicKey,
+                });
+                setStatus('success');
+                form.current.reset(); // Clear the form on success
+            } catch (error) {
+                console.error('FAILED...', error);
+                setStatus('error');
+            }
+        }
 
         setIsLoading(false);
-        setStatus('success');
 
-        // Reset status after a few seconds
-        setTimeout(() => setStatus('idle'), 3000);
+        // Reset status after a few seconds if successful
+        if (status === 'success') {
+            setTimeout(() => setStatus('idle'), 5000);
+        }
     };
 
     return (
@@ -50,7 +74,14 @@ export function ContactForm() {
                         </div>
                     ) : null}
 
-                    <form onSubmit={handleSubmit} className="space-y-6">
+                    {status === 'error' && (
+                        <div className="mb-6 p-4 bg-red-500/10 text-red-500 border border-red-500/20 rounded-lg flex items-center gap-3">
+                            <AlertCircle className="w-5 h-5 flex-shrink-0" />
+                            <p className="text-sm">Something went wrong. Please try again later.</p>
+                        </div>
+                    )}
+
+                    <form ref={form} onSubmit={handleSubmit} className="space-y-6">
                         <div className="grid md:grid-cols-2 gap-6">
                             <div className="space-y-2">
                                 <label htmlFor="name" className="text-sm font-semibold flex items-center gap-2">
@@ -61,6 +92,7 @@ export function ContactForm() {
                                     <input
                                         type="text"
                                         id="name"
+                                        name="name"
                                         required
                                         className="w-full h-12 px-4 rounded-lg border border-input bg-background/50 focus:bg-background transition-all focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
                                         placeholder="John Doe"
@@ -76,6 +108,7 @@ export function ContactForm() {
                                     <input
                                         type="email"
                                         id="email"
+                                        name="email"
                                         required
                                         className="w-full h-12 px-4 rounded-lg border border-input bg-background/50 focus:bg-background transition-all focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
                                         placeholder="john@example.com"
@@ -92,13 +125,14 @@ export function ContactForm() {
                             <div className="relative">
                                 <select
                                     id="subject"
+                                    name="subject"
                                     className="w-full h-12 px-4 rounded-lg border border-input bg-background/50 focus:bg-background transition-all focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none appearance-none"
                                 >
-                                    <option>General Inquiry</option>
-                                    <option>Advertising & Sponsorship</option>
-                                    <option>Report a Bug</option>
-                                    <option>Press & Media</option>
-                                    <option>Other</option>
+                                    <option value="General Inquiry">General Inquiry</option>
+                                    <option value="Advertising & Sponsorship">Advertising & Sponsorship</option>
+                                    <option value="Report a Bug">Report a Bug</option>
+                                    <option value="Press & Media">Press & Media</option>
+                                    <option value="Other">Other</option>
                                 </select>
                                 <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-muted-foreground">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><path d="m6 9 6 6 6-6" /></svg>
@@ -113,6 +147,7 @@ export function ContactForm() {
                             </label>
                             <textarea
                                 id="message"
+                                name="message"
                                 required
                                 rows={5}
                                 className="w-full p-4 rounded-lg border border-input bg-background/50 focus:bg-background transition-all focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none resize-none"

@@ -37,7 +37,7 @@ export default function ContactPage() {
                     <ContactCard
                         icon={<Mail className="w-6 h-6 text-blue-500" />}
                         title="General Inquiries & Editorial Support"
-                        email="contact@coingroww.com"
+                        email="contactcoingroww@gmail.com"
                         color="bg-blue-500/10"
                     />
                     <ContactCard
