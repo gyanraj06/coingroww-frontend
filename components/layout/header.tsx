@@ -51,6 +51,7 @@ const navigation = {
         items: [
             { name: "About Us", href: "/about" },
             { name: "Contact Us", href: "/contact" },
+            { name: "Advertise", href: "/advertise" },
             { name: "AI Policy", href: "/ai-policy" },
             { name: "Editorial Policy", href: "/editorial-policy" },
         ]
