@@ -130,7 +130,7 @@ export default function EventsPage() {
                                                         <h3 className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors truncate pr-4">
                                                             {event.title}
                                                         </h3>
-                                                        <p className="text-sm text-gray-500 truncate mt-0.5">
+                                                        <p className="text-sm text-gray-500 line-clamp-3 mt-0.5 text-wrap break-words">
                                                             {event.summary || "No description available"}
                                                         </p>
                                                     </div>

@@ -27,7 +27,7 @@ const navigation = {
         items: [
             { name: "Market Release", href: "/markets/market-release" },
             { name: "Crypto Price", href: "/markets/crypto-price" },
-            { name: "Crypto Stock", href: "/markets/crypto-stock" },
+
             { name: "Industry", href: "/markets/industry" },
         ]
     },
