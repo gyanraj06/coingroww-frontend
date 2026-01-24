@@ -48,6 +48,12 @@ export function HeroSection({ featuredPosts }: HeroSectionProps) {
                     </h2>
                     <div className="flex items-center text-gray-300 text-sm space-x-4">
                         <span className="font-medium text-blue-400">Featured</span>
+                        {mainFeature.author_name && (
+                            <>
+                                <span>•</span>
+                                <span>{mainFeature.author_name}</span>
+                            </>
+                        )}
                         <span>•</span>
                         <span>{new Date(mainFeature.created_at).toLocaleDateString()}</span>
                     </div>

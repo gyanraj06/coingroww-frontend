@@ -11,4 +11,5 @@ export interface Post {
   is_featured: boolean;
   is_editor_pick: boolean;
   trending_rank: number | null;
+  author_name: string | null;
 }

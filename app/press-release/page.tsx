@@ -69,6 +69,24 @@ export default async function PressReleasePage() {
                     </div>
                 </div>
             </div>
+
+            {/* Submit Press Release CTA */}
+            <div className="mt-12 p-8 rounded-xl bg-gradient-to-r from-orange-500/10 to-yellow-500/10 border border-orange-500/20">
+                <div className="text-center space-y-4">
+                    <h3 className="text-2xl font-bold text-white">
+                        Have a Press Release?
+                    </h3>
+                    <p className="text-gray-400 max-w-2xl mx-auto">
+                        We're open to your articles and will publish them for free.
+                    </p>
+                    <a
+                        href="mailto:contactcoingroww@gmail.com?subject=Press Release Submission"
+                        className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-orange-500 to-yellow-500 text-black font-bold rounded-lg hover:from-orange-600 hover:to-yellow-600 transition-all shadow-lg hover:shadow-orange-500/25"
+                    >
+                        Submit Your Press Release Here (Free)
+                    </a>
+                </div>
+            </div>
         </div>
     );
 }

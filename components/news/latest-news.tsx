@@ -37,10 +37,15 @@ export function LatestNews({ initialPosts, postsPerPage = 5 }: LatestNewsProps) 
 
                             {/* Content */}
                             <div className="md:col-span-8 flex flex-col justify-center">
-                                <div className="flex items-center gap-3 mb-2">
+                                <div className="flex flex-wrap items-center gap-3 mb-2">
                                     <span className="text-xs font-bold text-blue-400 bg-blue-400/10 px-2 py-0.5 rounded uppercase tracking-wide">
                                         {post.category}
                                     </span>
+                                    {post.author_name && (
+                                        <span className="text-xs text-gray-400 font-medium">
+                                            By {post.author_name}
+                                        </span>
+                                    )}
                                     <span className="flex items-center text-xs text-gray-500 font-medium">
                                         <Clock className="w-3 h-3 mr-1" />
                                         {new Date(post.created_at).toLocaleDateString()}

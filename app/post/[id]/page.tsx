@@ -1,7 +1,8 @@
 import { supabase } from '@/lib/supabase';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowLeft, Clock, Tag } from 'lucide-react';
+import { ArrowLeft, Clock, Tag, User } from 'lucide-react';
+import { ArticleContent } from '@/components/article-content';
 
 export const dynamic = 'force-dynamic';
 
@@ -16,6 +17,7 @@ interface Post {
     created_at: string;
     is_featured: boolean;
     is_editor_pick: boolean;
+    author_name: string | null;
 }
 
 async function getPost(id: string) {
@@ -74,11 +76,13 @@ export default async function PostPage({ params }: { params: { id: string } }) {
                         {post.title}
                     </h1>
 
-                    <p className="text-lg text-gray-400 mb-6">
-                        {post.excerpt}
-                    </p>
-
-                    <div className="flex items-center gap-4 text-sm text-gray-500">
+                    <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500 mb-6">
+                        {post.author_name && (
+                            <span className="flex items-center gap-1">
+                                <User className="w-4 h-4" />
+                                {post.author_name}
+                            </span>
+                        )}
                         <span className="flex items-center gap-1">
                             <Clock className="w-4 h-4" />
                             {new Date(post.created_at).toLocaleDateString('en-US', {
@@ -88,6 +92,10 @@ export default async function PostPage({ params }: { params: { id: string } }) {
                             })}
                         </span>
                     </div>
+
+                    <p className="text-lg text-gray-400">
+                        {post.excerpt}
+                    </p>
                 </header>
 
                 {/* Featured Image */}
@@ -102,9 +110,9 @@ export default async function PostPage({ params }: { params: { id: string } }) {
                 )}
 
                 {/* Article Content */}
-                <div
-                    className="prose prose-invert prose-lg max-w-none text-gray-300 [&>p]:mb-4 [&>h1]:text-white [&>h2]:text-white [&>h3]:text-white [&>ul]:list-disc [&>ul]:pl-5 [&>ol]:list-decimal [&>ol]:pl-5 [&>blockquote]:border-l-4 [&>blockquote]:border-blue-500 [&>blockquote]:pl-4 [&>blockquote]:italic"
-                    dangerouslySetInnerHTML={{ __html: post.content }}
+                <ArticleContent
+                    content={post.content}
+                    className="prose prose-invert prose-lg max-w-none text-gray-300 [&>p]:mb-4 [&>h1]:text-white [&>h2]:text-white [&>h3]:text-white [&>ul]:list-disc [&>ul]:pl-5 [&>ol]:list-decimal [&>ol]:pl-5 [&>blockquote]:border-l-4 [&>blockquote]:border-blue-500 [&>blockquote]:pl-4 [&>blockquote]:italic [&_img]:rounded-lg [&_img]:my-6 [&_img]:max-w-full [&_img]:h-auto [&_img]:mx-auto [&_img]:block"
                 />
             </article>
 

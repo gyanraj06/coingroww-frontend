@@ -1,23 +1,7 @@
 {
-  "/_not-found": "app/_not-found.js",
-  "/admin/publish/page": "app/admin/publish/page.js",
-  "/prediction/page": "app/prediction/page.js",
-  "/ai-policy/page": "app/ai-policy/page.js",
-  "/about/page": "app/about/page.js",
-  "/contact/page": "app/contact/page.js",
-  "/authors/page": "app/authors/page.js",
-  "/advertise/page": "app/advertise/page.js",
-  "/disclaimer/page": "app/disclaimer/page.js",
-  "/markets/[tag]/page": "app/markets/[tag]/page.js",
-  "/editorial-policy/page": "app/editorial-policy/page.js",
-  "/markets/page": "app/markets/page.js",
-  "/news/[tag]/page": "app/news/[tag]/page.js",
-  "/news/page": "app/news/page.js",
-  "/press-release/page": "app/press-release/page.js",
-  "/page": "app/page.js",
-  "/terms/page": "app/terms/page.js",
-  "/privacy/page": "app/privacy/page.js",
   "/post/[id]/page": "app/post/[id]/page.js",
-  "/top/[tag]/page": "app/top/[tag]/page.js",
-  "/top/page": "app/top/page.js"
+  "/press-release/page": "app/press-release/page.js",
+  "/events/page": "app/events/page.js",
+  "/events/[id]/page": "app/events/[id]/page.js",
+  "/page": "app/page.js"
 }

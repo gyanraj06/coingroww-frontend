@@ -18,7 +18,7 @@ const navigation = {
             { name: "NFTs", href: "/news/nfts" },
             { name: "GameFi", href: "/news/gamefi" },
             { name: "Sponsored", href: "/news/sponsored" },
-            { name: "P/R", href: "/press-release" },
+            { name: "PR", href: "/press-release" },
         ]
     },
     markets: {
@@ -40,7 +40,7 @@ const navigation = {
             { name: "Casinos", href: "/top/casinos" },
             { name: "Wallets", href: "/top/wallets" },
             { name: "Mining", href: "/top/mining" },
-            { name: "Bots", href: "/top/bots" },
+
             { name: "DeFi", href: "/top/defi" },
             { name: "NFTs", href: "/top/nfts" },
         ]
@@ -55,6 +55,7 @@ const navigation = {
             { name: "Advertise", href: "/advertise" },
             { name: "AI Policy", href: "/ai-policy" },
             { name: "Editorial Policy", href: "/editorial-policy" },
+            { name: "Events", href: "/events" },
         ]
     }
 };
@@ -167,8 +168,8 @@ export function Header() {
                     <Link href="/prediction" className="px-4 py-2 text-sm font-bold uppercase tracking-wider text-gray-300 hover:text-blue-500 transition-colors">
                         Price Prediction
                     </Link>
-                    <Link href="/event" className="px-4 py-2 text-sm font-bold uppercase tracking-wider text-gray-300 hover:text-blue-500 transition-colors">
-                        Event
+                    <Link href="/events" className="px-4 py-2 text-sm font-bold uppercase tracking-wider text-gray-300 hover:text-blue-500 transition-colors">
+                        Events
                     </Link>
                 </nav>
 
@@ -217,7 +218,7 @@ export function Header() {
                         <div className="border-t border-[#1f1f1f] pt-6 space-y-4">
                             <Link href="/press-release" className="block text-lg font-bold text-white uppercase">Press Release</Link>
                             <Link href="/prediction" className="block text-lg font-bold text-white uppercase">Price Prediction</Link>
-                            <Link href="/event" className="block text-lg font-bold text-white uppercase">Event</Link>
+                            <Link href="/events" className="block text-lg font-bold text-white uppercase">Events</Link>
                         </div>
                     </nav>
                 </div>
